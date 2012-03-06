@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="snap">
+    <flow name="snapFlow1">
+        <lane entity-id="c062319a-0027-4f03-adfd-8f3ae8e1460c">
+            <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="HTTP" type="http://www.mulesoft.org/schema/mule/https/endpoint" entity-id="592bfc8a-c3c4-4c2b-b605-41a641b80125">
+                <properties>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="9900"/>
+                    <property name="user"/>
+                    <property name="password"/>
+                    <property name="path"/>
+                    <property name="method" value="GET"/>
+                    <property name="contentType" value=""/>
+                    <property name="keep-alive"/>
+                    <property name="address"/>
+                    <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="followRedirects"/>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="connector-ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                </properties>
+                <description>The HTTPS endpoint allows Mule to send and recieve requests securely using HTTP over SSL protocol.</description>
+            </endpoint>
+            <splitter name="All" entity-id="95b483f7-d657-43d3-b828-dc9b23fe47cc">
+                <description>Sends message to all routes.</description>
+                <pattern name="All" type="org.mule.tooling.ui.modules.core.pattern.all" entity-id="f78e8c7e-02ca-4df8-b897-c38a06a6e354">
+                    <description>Sends message to all routes.</description>
+                </pattern>
+                <compartment entity-id="0f70150a-f32e-471e-9c83-2ce083380b47">
+                    <lane entity-id="57efea77-e54f-44af-92ff-8c406b90e117">
+                        <pattern name="Component" type="org.mule.tooling.ui.modules.core.pattern.component" entity-id="92b6bd2c-3880-45d3-936d-66fe2ea470e9">
+                            <properties>
+<property name="class.name" value="com.snapquest.components.AuthenticateComponent"/>
+<property name="component.singleton" value="false"/>
+                            </properties>
+                            <description>Invoke a Java component</description>
+                        </pattern>
+                    </lane>
+                </compartment>
+            </splitter>
+        </lane>
+    </flow>
+    <flow name="snapFlow2">
+        <lane entity-id="fe03a6ef-2356-40e3-8e12-1072446b4bc1">
+            <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="HTTP" type="http://www.mulesoft.org/schema/mule/https/endpoint" entity-id="78818578-d53d-4b5c-a0da-6ed470f5de68">
+                <properties>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="host" value="localhost"/>
+                    <property name="port" value="9901"/>
+                    <property name="user"/>
+                    <property name="password"/>
+                    <property name="path"/>
+                    <property name="method" value="GET"/>
+                    <property name="contentType" value=""/>
+                    <property name="keep-alive"/>
+                    <property name="address"/>
+                    <property name="responseTimeout"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="followRedirects"/>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="connector-ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                </properties>
+                <description>The HTTPS endpoint allows Mule to send and recieve requests securely using HTTP over SSL protocol.</description>
+            </endpoint>
+            <splitter name="All" entity-id="85ba903c-ef42-4263-a913-15abc6629cc3">
+                <description>Sends message to all routes.</description>
+                <pattern name="All" type="org.mule.tooling.ui.modules.core.pattern.all" entity-id="8cc91fa4-a02d-4892-ab35-43d20398868b">
+                    <description>Sends message to all routes.</description>
+                </pattern>
+                <compartment entity-id="59d7cb84-b2ff-4db0-8336-b5300ab62114">
+                    <lane entity-id="c6a4f84c-ffcf-4461-9aee-6d1f2ca446bb">
+                        <pattern name="Component" type="org.mule.tooling.ui.modules.core.pattern.component" entity-id="6584fff3-d1f2-409f-93e7-e486d141bd22">
+                            <properties>
+<property name="class.name" value="com.snapquest.components.CommanderComponent"/>
+<property name="component.singleton" value="false"/>
+                            </properties>
+                            <description>Invoke a Java component</description>
+                        </pattern>
+                    </lane>
+                </compartment>
+            </splitter>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>
